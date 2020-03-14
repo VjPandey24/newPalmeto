@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+ 
+ 
+ <hibernate-mapping package="Model">  
+  <class name="Cart" table="CART">  
+    <id name="id" type="long">
+    <column name="cart_id"/>  
+     <generator class="identity"></generator>  
+    </id>  
+           
+    <property name="total" type="double">
+     <column name="total" />
+     </property>  
+    <property name="name" type="string">
+    <column name="name"/>
+    </property>  
+           
+    <set name="items" table="ITEMS" fetch="select">
+    <key>
+    <column name="cart_id" not-null="true"></column>
+    </key>
+    <one-to-many class="Items" />
+    </set>
+      
+           
+  </class>  
+           
+ </hibernate-mapping>  
